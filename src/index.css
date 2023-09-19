@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Source Sans 3", sans-serif;
+  transition: background-color 0.4s ease-in-out;
+}
+
+.MuiInput-root,
+.Mui-focused,
+.MuiTextField-root {
+  border: "none";
+  outline: none;
+}
+
+.MuiTableRow-root:hover td {
+  background-color: #eeeeee77 !important;
+}
+.MuiAutocomplete-input {
+  height: 20px !important;
+}
+
+.MuiInputBase-root {
+  border-radius: 8px !important;
+}
