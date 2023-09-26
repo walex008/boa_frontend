@@ -12,12 +12,6 @@ const Profession = () => {
   const areaRef = useRef<HTMLUListElement>(null);
   const areaIconRef = useRef<HTMLImageElement>(null);
 
-  const [group, setGroup] = useState<string | null>(null);
-  const [openGroup, setOpenGroup] = useState<Boolean>(false);
-
-  const groupRef = useRef<HTMLUListElement>(null);
-  const groupIconRef = useRef<HTMLImageElement>(null);
-
   const [zone, setZone] = useState<string | null>(null);
   const [openZone, setOpenZone] = useState<Boolean>(false);
 
@@ -29,12 +23,6 @@ const Profession = () => {
 
   const branchRef = useRef<HTMLUListElement>(null);
   const branchIconRef = useRef<HTMLImageElement>(null);
-
-  const [staff, setStaff] = useState<string | null>(null);
-  const [openStaff, setOpenStaff] = useState<Boolean>(false);
-
-  const staffRef = useRef<HTMLUListElement>(null);
-  const staffIconRef = useRef<HTMLImageElement>(null);
   return (
     <div
       className={`w-full rounded-[16px]  p-[24px_48px] ${

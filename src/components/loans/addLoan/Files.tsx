@@ -11,7 +11,7 @@ const Files = () => {
       }`}
     >
       <div className=" text-blue text-[20px] font-[600]">FILES</div>
-      <form className={`mt-[45px]`}>
+      <form className={`mt-[31px]`}>
         <div className={`flex flex-col gap-y-[8px]`}>
           <label
             className={`text-[18px] font-[600] ${
@@ -68,7 +68,7 @@ const Files = () => {
         </div>
 
         <button className="h-[48px] w-[207px] p-[8px_16px] bg-blue text-textWhite text-[18px] font-[600] rounded-[8px] mt-[47px]">
-          Save Changes
+          Submit
         </button>
       </form>
     </div>

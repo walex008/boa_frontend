@@ -42,11 +42,10 @@ export const ticketsChild: Child = [
 ];
 
 export const loansChild: Child = [
-  { name: "View Loans", link: "" },
-  { name: "View Applications", link: "" },
-  { name: "Create Loan", link: "" },
-  { name: "Manage Products", link: "" },
-  { name: "Manage Charges", link: "" },
+  { name: "View Loans", link: "/loans" },
+  { name: "Create Loan", link: "/loans/add-loan" },
+  { name: "Products", link: "" },
+  { name: "Charges", link: "" },
   { name: "Loan Calculator", link: "" },
   { name: "Bulk Repayments", link: "" },
   { name: "Bulk Approval", link: "" },

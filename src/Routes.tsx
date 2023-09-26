@@ -28,6 +28,10 @@ import AddPayroll from "./components/payroll/AddPayroll";
 import PayrollItem from "./components/payroll/PayrollItem";
 import PayrollTemplate from "./components/payroll/PayrollTemplate";
 import ClientDetails from "./components/client/ClientDetails.tsx/ClientDetails";
+import Loans from "./pages/Loans";
+import AllLoans from "./components/loans/AllLoans";
+import AddLoan from "./components/loans/addLoan/AddLoan";
+import EditLoan from "./components/loans/editLoan/EditLoan";
 
 const routes = createBrowserRouter([
   {
@@ -160,6 +164,25 @@ const routes = createBrowserRouter([
       {
         path: "client-details/:clientId",
         element: <ClientDetails />,
+      },
+    ],
+  },
+
+  {
+    path: "/loans",
+    element: <Loans />,
+    children: [
+      {
+        index: true,
+        element: <AllLoans />,
+      },
+      {
+        path: "add-loan",
+        element: <AddLoan />,
+      },
+      {
+        path: "edit-loan/:id",
+        element: <EditLoan />,
       },
     ],
   },

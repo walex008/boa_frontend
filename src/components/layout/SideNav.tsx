@@ -234,7 +234,7 @@ const SideNav = () => {
             setShowChild((child) => (child === "Clients" ? null : "Clients"));
             navigate("/client");
           }}
-          link="client" 
+          link="client"
           name="Clients"
           img={
             <svg
@@ -319,15 +319,22 @@ const SideNav = () => {
         />
 
         <DropMenu
-          pClick={() =>
-            setShowChild((child) => (child === "Loans" ? null : "Loans"))
-          }
+          pClick={() => {
+            setShowChild((child) => (child === "Loans" ? null : "Loans"));
+            navigate("/loans");
+          }}
+          link="loans"
           name="Loans"
           img={
             <svg
-              className={` group-hover:fill-[#106CFF] ${
-                darkMode === "true" ? "fill-[#CBCBCB]" : "fill-[#404040]"
-              }`}
+              className={` 
+               
+            group-hover:fill-blue
+           ${
+             location.pathname.split("/")[1] === "loans"
+               ? currentStyle
+               : generalStyle
+           }`}
               width="24"
               height="24"
               viewBox="0 0 32 32"
