@@ -32,6 +32,7 @@ import Loans from "./pages/Loans";
 import AllLoans from "./components/loans/AllLoans";
 import AddLoan from "./components/loans/addLoan/AddLoan";
 import EditLoan from "./components/loans/editLoan/EditLoan";
+import DetailsApproved from "./components/loans/detailsApproved/DetailsApproved";
 
 const routes = createBrowserRouter([
   {
@@ -183,6 +184,11 @@ const routes = createBrowserRouter([
       {
         path: "edit-loan/:id",
         element: <EditLoan />,
+      },
+
+      {
+        path: "loan-details/approved/:id",
+        element: <DetailsApproved />,
       },
     ],
   },

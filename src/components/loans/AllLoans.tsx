@@ -45,7 +45,7 @@ const data: ClientDataType[] = [
     amount: "100000",
     disbursed: "10-10-22",
     product: "lorem",
-    status: "Active",
+    status: "Pending",
   },
   {
     id: 3,
@@ -68,7 +68,7 @@ const data: ClientDataType[] = [
     amount: "100000",
     disbursed: "10-10-22",
     product: "lorem",
-    status: "Active",
+    status: "Pending",
   },
 ];
 
@@ -364,7 +364,8 @@ const AllLoans = () => {
           muiTableBodyCellProps={({ row, column }) => ({
             onClick: () => {
               if (column.id !== "mrt-row-actions") {
-                navigate(`/client/client-details/${row.original.id}`);
+                row.original?.status === "Active" &&
+                  navigate(`/loans/loan-details/approved/${row.original.id}`);
               }
             },
 

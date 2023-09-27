@@ -392,25 +392,41 @@ const LoanDetails = () => {
             >
               <TableRow>
                 <TableCell
-                  sx={{ color: "#404040", fontSize: "1rem", fontWeight: "600" }}
+                  sx={{
+                    color: darkMode === "true" ? "#CBCBCB" : "#404040",
+                    fontSize: "1rem",
+                    fontWeight: "600",
+                  }}
                 >
                   Name
                 </TableCell>
                 <TableCell
                   align="right"
-                  sx={{ color: "#404040", fontSize: "1rem", fontWeight: "600" }}
+                  sx={{
+                    color: darkMode === "true" ? "#CBCBCB" : "#404040",
+                    fontSize: "1rem",
+                    fontWeight: "600",
+                  }}
                 >
                   Type
                 </TableCell>
                 <TableCell
                   align="right"
-                  sx={{ color: "#404040", fontSize: "1rem", fontWeight: "600" }}
+                  sx={{
+                    color: darkMode === "true" ? "#CBCBCB" : "#404040",
+                    fontSize: "1rem",
+                    fontWeight: "600",
+                  }}
                 >
                   Amount
                 </TableCell>
                 <TableCell
                   align="right"
-                  sx={{ color: "#404040", fontSize: "1rem", fontWeight: "600" }}
+                  sx={{
+                    color: darkMode === "true" ? "#CBCBCB" : "#404040",
+                    fontSize: "1rem",
+                    fontWeight: "600",
+                  }}
                 >
                   Collected
                 </TableCell>
