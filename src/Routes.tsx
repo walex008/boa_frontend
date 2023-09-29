@@ -33,6 +33,13 @@ import AllLoans from "./components/loans/AllLoans";
 import AddLoan from "./components/loans/addLoan/AddLoan";
 import EditLoan from "./components/loans/editLoan/EditLoan";
 import DetailsApproved from "./components/loans/detailsApproved/DetailsApproved";
+import TransactionDetails from "./components/loans/TransactionDetails";
+import AddCharge from "./components/loans/AddCharge";
+import AddFile from "./components/loans/AddFile";
+import AddCollateral from "./components/loans/AddCollateral";
+import AddGuarantor from "./components/loans/AddGuarantor";
+import AddNote from "./components/loans/AddNote";
+import DisbursementDetails from "./components/loans/DisbursementDetails";
 
 const routes = createBrowserRouter([
   {
@@ -189,6 +196,34 @@ const routes = createBrowserRouter([
       {
         path: "loan-details/approved/:id",
         element: <DetailsApproved />,
+      },
+      {
+        path: "transaction-details/:id",
+        element: <TransactionDetails />,
+      },
+      {
+        path: "disbursement-details/:id",
+        element: <DisbursementDetails />,
+      },
+      {
+        path: "add-charge",
+        element: <AddCharge />,
+      },
+      {
+        path: "add-file",
+        element: <AddFile />,
+      },
+      {
+        path: "add-collateral",
+        element: <AddCollateral />,
+      },
+      {
+        path: "add-guarantor",
+        element: <AddGuarantor />,
+      },
+      {
+        path: "add-note",
+        element: <AddNote />,
       },
     ],
   },

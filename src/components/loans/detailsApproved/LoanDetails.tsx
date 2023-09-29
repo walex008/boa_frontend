@@ -1,4 +1,7 @@
+import { Link, useParams } from "react-router-dom";
+
 const LoanDetails = () => {
+  const { id } = useParams();
   return (
     <div className=" flex flex-col w-full mt-[40px] gap-y-[4px]">
       <div className=" w-full flex">
@@ -68,9 +71,12 @@ const LoanDetails = () => {
         <div className=" h-[68px] w-[50%] bg-[#CCE0FF] flex items-center justify-center text-[1rem] text-textBlackH font-[600]">
           Disbursed On
         </div>
-        <div className=" h-[68px] w-[50%] bg-[#D6E6FF] flex items-center justify-center text-[1rem] text-blue font-[400]">
+        <Link
+          to={`/loans/disbursement-details/${id}`}
+          className=" h-[68px] w-[50%] bg-[#D6E6FF] flex items-center justify-center text-[1rem] text-blue font-[400]"
+        >
           2023-08-08 By Lorem Ipsum
-        </div>
+        </Link>
       </div>
 
       <div className=" w-full flex">

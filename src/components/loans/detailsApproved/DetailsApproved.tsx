@@ -10,6 +10,7 @@ import Files from "./Files";
 import Collateral from "./Collateral";
 import Notes from "./Notes";
 import VCard from "../../extras/VCard";
+import Guarantors from "./Guarantors";
 
 const DetailsApproved = () => {
   const navigate = useNavigate();
@@ -361,7 +362,7 @@ const DetailsApproved = () => {
           {currentPage === 4 && <Charges />}
           {currentPage === 5 && <Files />}
           {currentPage === 6 && <Collateral />}
-          {currentPage === 7 && <Files />}
+          {currentPage === 7 && <Guarantors />}
           {currentPage === 8 && <Notes />}
         </div>
       </div>
