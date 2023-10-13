@@ -364,8 +364,9 @@ const AllLoans = () => {
           muiTableBodyCellProps={({ row, column }) => ({
             onClick: () => {
               if (column.id !== "mrt-row-actions") {
-                row.original?.status === "Active" &&
-                  navigate(`/loans/loan-details/approved/${row.original.id}`);
+                row.original?.status === "Active"
+                  ? navigate(`/loans/loan-details/approved/${row.original.id}`)
+                  : navigate(`/loans/loan-details/pending/${row.original.id}`);
               }
             },
 

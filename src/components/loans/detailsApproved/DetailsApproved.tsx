@@ -2,20 +2,34 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../../app/hooks";
 import { mode } from "../../../appSlices/generalSlice";
-import LoanDetails from "./LoanDetails";
+import LoanDetails from "../approved&pending/LoanDetails";
 import RepaymentSchedule from "./RepaymentSchedule";
 import Transactions from "./Transactions";
-import Charges from "./Charges";
-import Files from "./Files";
-import Collateral from "./Collateral";
-import Notes from "./Notes";
+import Charges from "../approved&pending/Charges";
+import Files from "../approved&pending/Files";
+import Collateral from "../approved&pending/Collateral";
+import Notes from "../approved&pending/Notes";
 import VCard from "../../extras/VCard";
-import Guarantors from "./Guarantors";
+import Guarantors from "../approved&pending/Guarantors";
+import { Modal } from "@mui/material";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import dayjs, { Dayjs } from "dayjs";
+import { DatePicker } from "@mui/x-date-pickers";
 
 const DetailsApproved = () => {
   const navigate = useNavigate();
   const darkMode = useAppSelector(mode);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [openWriteOff, setOpenWriteOff] = useState<boolean>(false);
+  const [opening_date, setOpening_Date] = useState<Dayjs | null>(
+    dayjs("2023-08-17")
+  );
+
+  const handleCloseWriteOff = () => {
+    setOpenWriteOff(false);
+  };
 
   const SwitchMenu = ({
     index,
@@ -126,16 +140,25 @@ const DetailsApproved = () => {
         <div className=" flex-grow w-full">
           <div>
             <div className="flex rounded-[8px] border-[1px] border-blue w-[fit-content]">
-              <button className=" w-[9.2696rem] h-[48px] p-[12px_16px] bg-[transparent] text-blue text-[1.125rem] font-[600] text-center border-r-[1px] border-r-blue">
+              <button
+                className=" w-[9.2696rem] h-[48px] p-[12px_16px] bg-[transparent] text-blue text-[1.125rem] font-[600] text-center border-r-[1px] border-r-blue"
+                onClick={() => navigate("/loans/add-repayment")}
+              >
                 Repayment
               </button>
               <button className="flex flex-col justify-center items-center w-[9.2696rem] h-[48px] p-[12px_16px] bg-[transparent] text-blue text-[1.125rem] font-[600] text-center border-r-[1px] border-r-blue">
                 Undo Disbursement
               </button>
-              <button className="flex flex-col justify-center items-center w-[9.2696rem] h-[48px] p-[12px_16px] bg-[transparent] text-blue text-[1.125rem] font-[600] text-center border-r-[1px] border-r-blue">
+              <button
+                className="flex flex-col justify-center items-center w-[9.2696rem] h-[48px] p-[12px_16px] bg-[transparent] text-blue text-[1.125rem] font-[600] text-center border-r-[1px] border-r-blue"
+                onClick={() => navigate("/loans/add-charge")}
+              >
                 Add Charge
               </button>
-              <button className="flex flex-col justify-center items-center w-[9.2696rem] h-[48px] p-[12px_16px] bg-[transparent] text-blue text-[1.125rem] font-[600] text-center">
+              <button
+                className="flex flex-col justify-center items-center w-[9.2696rem] h-[48px] p-[12px_16px] bg-[transparent] text-blue text-[1.125rem] font-[600] text-center"
+                onClick={() => setOpenWriteOff(true)}
+              >
                 Write Off <br />
                 Loan
               </button>
@@ -366,6 +389,64 @@ const DetailsApproved = () => {
           {currentPage === 8 && <Notes />}
         </div>
       </div>
+
+      <Modal open={openWriteOff} onClose={handleCloseWriteOff}>
+        <div className=" w-[42.3125rem]  bg-[#F6F7F8] rounded-[24px] mx-[auto] mt-[2rem] pb-[42px] shadow-[0px_1px_8px_0px_rgba(0,0,0,0.12)]">
+          <div className="bg-[#F5F9FF] rounded-tl-[24px] rounded-tr-[24px] flex items-center justify-between p-[23px_53px_22px_51px] border-b-[1px] border-b-[#C6CCD2]">
+            <span className=" text-[2rem] text-textBlackH font-[600]">
+              Write Off Loan
+            </span>{" "}
+            <img
+              src="/images/cancel.png"
+              alt=""
+              onClick={() => setOpenWriteOff(false)}
+              className=" cursor-pointer"
+            />
+          </div>
+
+          <form className="w-full px-[37px]">
+            <div className={`flex flex-col gap-y-[8px]`}>
+              <label
+                className={`text-[1rem] font-[600] mt-[20px] ${
+                  darkMode === "true" ? "text-textGreyWhite" : "text-textBlackH"
+                }`}
+              >
+                Date
+              </label>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DemoContainer components={["DatePicker", "DatePicker"]}>
+                  <DatePicker
+                    sx={{
+                      width: "100%",
+                      borderRadius: "8px",
+                    }}
+                    value={opening_date}
+                    onChange={(newDate) => setOpening_Date(newDate)}
+                  />
+                </DemoContainer>
+              </LocalizationProvider>
+            </div>
+            <div className={`flex flex-col gap-y-[8px]`}>
+              <label
+                className={`text-[1rem] font-[600] mt-[20px] ${
+                  darkMode === "true" ? "text-textGreyWhite" : "text-textBlackH"
+                }`}
+              >
+                Write Off Note
+              </label>
+              <textarea
+                className={`w-full py-3 pr-3 pl-[21px] border-[1px] border-[#C6CCD2] rounded-[8px] h-[160px] outline-none shadow-[0px_1px_4px_0px_rgba(0,0,0,0.04)] text-[16px] text-[#808080] font-[600] resize-none ${
+                  darkMode === "true" ? "bg-[transparent]" : "bg-[transparent]"
+                }`}
+                placeholder="Type here..."
+              />
+            </div>
+            <button className="h-[48px] w-[8.25rem] p-[8px_16px] bg-blue text-textWhite text-[18px] font-[600] rounded-[8px] mt-[43px]">
+              Save
+            </button>
+          </form>
+        </div>
+      </Modal>
     </div>
   );
 };

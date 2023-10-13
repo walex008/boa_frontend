@@ -5,7 +5,7 @@ import {
   MRT_Row,
 } from "material-react-table";
 import { Box, IconButton, Tooltip } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../../app/hooks";
 import { mode } from "../../../appSlices/generalSlice";
 

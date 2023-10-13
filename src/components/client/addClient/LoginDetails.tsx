@@ -1,40 +1,16 @@
 import { useRef, useState } from "react";
 import { useAppSelector } from "../../../app/hooks";
 import { mode } from "../../../appSlices/generalSlice";
-import Avatar from "./Avatar";
 import { InputSelect } from "../../extras/InputSelect";
 
 const LoginDetails = () => {
   const darkMode = useAppSelector(mode);
-  const [area, setArea] = useState<string | null>(null);
-  const [openArea, setOpenArea] = useState<Boolean>(false);
-
-  const areaRef = useRef<HTMLUListElement>(null);
-  const areaIconRef = useRef<HTMLImageElement>(null);
-
-  const [group, setGroup] = useState<string | null>(null);
-  const [openGroup, setOpenGroup] = useState<Boolean>(false);
-
-  const groupRef = useRef<HTMLUListElement>(null);
-  const groupIconRef = useRef<HTMLImageElement>(null);
 
   const [zone, setZone] = useState<string | null>(null);
   const [openZone, setOpenZone] = useState<Boolean>(false);
 
   const zoneRef = useRef<HTMLUListElement>(null);
   const zoneIconRef = useRef<HTMLImageElement>(null);
-
-  const [branch, setBranch] = useState<string | null>(null);
-  const [openBranch, setOpenBranch] = useState<Boolean>(false);
-
-  const branchRef = useRef<HTMLUListElement>(null);
-  const branchIconRef = useRef<HTMLImageElement>(null);
-
-  const [staff, setStaff] = useState<string | null>(null);
-  const [openStaff, setOpenStaff] = useState<Boolean>(false);
-
-  const staffRef = useRef<HTMLUListElement>(null);
-  const staffIconRef = useRef<HTMLImageElement>(null);
 
   const [newUser, setNewUser] = useState<Boolean>(false);
   return (
@@ -47,7 +23,9 @@ const LoginDetails = () => {
       <div className="flex  mt-[28px]">
         <button
           className={`w-[168px] h-[48px] p-[8px_16px]  rounded-[8px] border-[1px] border-blue mr-[-16px] ${
-            newUser ? " bg-textWhite text-blue" : " bg-blue text-textWhite z-10"
+            newUser
+              ? " bg-textWhite text-blue"
+              : " bg-blue text-textWhite z-[1]"
           }`}
           onClick={() => setNewUser(false)}
         >

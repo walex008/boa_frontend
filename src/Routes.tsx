@@ -40,6 +40,9 @@ import AddCollateral from "./components/loans/AddCollateral";
 import AddGuarantor from "./components/loans/AddGuarantor";
 import AddNote from "./components/loans/AddNote";
 import DisbursementDetails from "./components/loans/DisbursementDetails";
+import AddRepayment from "./components/loans/detailsApproved/AddRepayment";
+import DetailsPending from "./components/loans/detailsPending/DetailsPending";
+import Disburse from "./components/loans/detailsPending/Disburse";
 
 const routes = createBrowserRouter([
   {
@@ -198,6 +201,10 @@ const routes = createBrowserRouter([
         element: <DetailsApproved />,
       },
       {
+        path: "loan-details/pending/:id",
+        element: <DetailsPending />,
+      },
+      {
         path: "transaction-details/:id",
         element: <TransactionDetails />,
       },
@@ -224,6 +231,14 @@ const routes = createBrowserRouter([
       {
         path: "add-note",
         element: <AddNote />,
+      },
+      {
+        path: "add-repayment",
+        element: <AddRepayment />,
+      },
+      {
+        path: "disburse",
+        element: <Disburse />,
       },
     ],
   },

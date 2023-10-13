@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { useClickOut } from "../../utils/hooks/CheckOut";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { setMode, mode } from "../../appSlices/generalSlice";
-import { useNavigate } from "react-router-dom";
+import { LightMode } from "@mui/icons-material";
 
 const Header = () => {
   const [extendProfile, setExtendProfile] = useState<Boolean>(false);
@@ -10,7 +10,6 @@ const Header = () => {
   const dropRef = useRef<HTMLImageElement>(null);
   const dispatch = useAppDispatch();
   const darkMode = useAppSelector(mode);
-  const navigate = useNavigate();
 
   useClickOut({
     onState: extendProfile,
@@ -47,14 +46,30 @@ const Header = () => {
 
         <div className="flex items-center ">
           <div className="flex mr-[30px] gap-x-[19px]">
-            <img
-              src={`/images/${darkMode === "true" ? "darkWhite" : "dark"}.png`}
-              alt=""
-              className=" cursor-pointer"
-              onClick={() => {
-                dispatch(setMode());
-              }}
-            />
+            <div>
+              {darkMode === "false" ? (
+                <img
+                  src="/images/dark.png"
+                  alt=""
+                  className=" cursor-pointer"
+                  onClick={() => {
+                    dispatch(setMode());
+                  }}
+                />
+              ) : (
+                <LightMode
+                  sx={{
+                    color: "#fff",
+                    height: "25px",
+                    width: "25px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    dispatch(setMode());
+                  }}
+                />
+              )}
+            </div>
             <img
               src={`/images/${
                 darkMode === "true" ? "notificationWhite" : "notification"
