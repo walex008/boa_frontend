@@ -43,6 +43,7 @@ import DisbursementDetails from "./components/loans/DisbursementDetails";
 import AddRepayment from "./components/loans/detailsApproved/AddRepayment";
 import DetailsPending from "./components/loans/detailsPending/DetailsPending";
 import Disburse from "./components/loans/detailsPending/Disburse";
+import AllProducts from "./components/loans/products/AllProducts";
 
 const routes = createBrowserRouter([
   {
@@ -239,6 +240,10 @@ const routes = createBrowserRouter([
       {
         path: "disburse",
         element: <Disburse />,
+      },
+      {
+        path: "products",
+        element: <AllProducts />,
       },
     ],
   },

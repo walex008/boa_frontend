@@ -44,7 +44,7 @@ export const ticketsChild: Child = [
 export const loansChild: Child = [
   { name: "View Loans", link: "/loans" },
   { name: "Create Loan", link: "/loans/add-loan" },
-  { name: "Products", link: "" },
+  { name: "Products", link: "/loans/products" },
   { name: "Charges", link: "" },
   { name: "Loan Calculator", link: "" },
   { name: "Bulk Repayments", link: "" },
