@@ -6,8 +6,8 @@ import { InputSelect } from "../extras/InputSelect";
 
 const AddCollateral = () => {
   const navigate = useNavigate();
-  const [name, setValue] = useState<string | null>(null);
-  const [file, setFile] = useState<string | null>(null);
+  // const [name, setValue] = useState<string | null>(null);
+  // const [file, setFile] = useState<string | null>(null);
 
   const [type, setType] = useState<string | null>(null);
   const [openType, setOpenType] = useState<Boolean>(false);

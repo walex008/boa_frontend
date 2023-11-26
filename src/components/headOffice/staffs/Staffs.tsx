@@ -75,7 +75,7 @@ const data: InputDataType[] = [
 ];
 
 const Staffs = () => {
-  const [tableData, setTableData] = useState<InputDataType[]>(data);
+  const tableData:InputDataType[] = data;
   const [openRowModal, setOpenRowModal] = useState<string | null>(null);
   const rowModalRef = useRef(null);
   const rowBtnRef = useRef(null);

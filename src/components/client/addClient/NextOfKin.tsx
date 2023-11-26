@@ -237,6 +237,7 @@ const NextOfKin = () => {
                 onChange={(event: any, newCountry: string | null) => {
                   setCountry(newCountry);
                   console.log(newCountry, country);
+                  console.log(event)
                 }}
                 options={countryNames}
                 sx={{ width: "100%" }}

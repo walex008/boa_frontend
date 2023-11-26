@@ -17,6 +17,9 @@ const AddCharge = () => {
   );
   const darkMode = useAppSelector(mode);
 
+  console.log(amount)
+  console.log(charge)
+
   return (
     <>
       <form className="pt-[13px] pr-[49px] pl-[39px]">

@@ -23,6 +23,8 @@ const AddGuarantor = () => {
   const [email, setEmail] = useState<string | null>(null);
   const [profession, setProfession] = useState<string | null>(null);
 
+  console.log(firstName, lastName, mobile, address, occupation, occupationAddress, email, profession)
+
   const [relationship, setRelationship] = useState<string | null>(null);
   const [openRelationship, setOpenRelationship] = useState<Boolean>(false);
 
@@ -215,7 +217,7 @@ const AddGuarantor = () => {
               value={country}
               onChange={(event: any, newCountry: string | null) => {
                 setCountry(newCountry);
-                console.log(newCountry, country);
+                console.log(newCountry, country, event);
               }}
               options={countryNames}
               sx={{ width: "503px" }}
