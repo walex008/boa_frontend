@@ -3,16 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 const SignUp = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-full min-h-full px-[48px] py-[24px] flex flex-col items-center justify-center bg-[url(/images/authBg.svg)] bg-no-repeat bg-cover bg-center">
-      <div className="text-[48px] text-textBlackH font-[600] self-start">
+    <div className="w-full min-h-full px-[15px] md:px-[48px] py-[24px] flex flex-col items-center justify-center bg-[url(/images/authBg.svg)] bg-no-repeat bg-cover bg-center">
+      <div className="text-[2rem] md:text-[3rem] text-textBlackH font-[600] self-start">
         Logo
       </div>
 
-      <form className="bg-textWhite rounded-[64px_0] shadow-[0px_1px_8px_0px_rgba(0,0,0,0.12)] max-w-[540px] p-[31px_40px_44px_41px] mt-[44px]">
-        <div className=" text-center text-[40px] text-blue font-[400]">
+      <form className="bg-textWhite rounded-[64px_0] shadow-[0px_1px_8px_0px_rgba(0,0,0,0.12)] max-w-[540px] p-[31px_15px_44px_15px] md:p-[31px_40px_44px_41px] mt-[44px]">
+        <div className=" text-center text-[1.5rem] md:text-[2.5rem] text-blue font-[400]">
           Sign up
         </div>
-        <p className=" text-center text-[20px] text-textBlack font-[400]">
+        <p className=" text-center text-[1rem] md:text-[1.25rem] text-textBlack font-[400]">
           The all in one ultimate website for your savings and loan.
         </p>
 
@@ -40,12 +40,12 @@ const SignUp = () => {
         </div>
 
         <button
-          className="mt-[66px] bg-blue h-[64px] w-full rounded-[16px] text-[20px] text-textWhite font-[700]"
+          className="mt-[66px] bg-blue h-[64px] w-full rounded-[16px] text-[1rem] md:text-[1.25rem] text-textWhite font-[700]"
           onClick={() => navigate("/dashboard")}
         >
           SIGN UP
         </button>
-        <span className=" text-[18px] text-textBlackH font-[400] flex items-center justify-center mt-[35px]">
+        <span className=" text-[0.875rem] md:text-[1rem] text-textBlackH font-[400] flex items-center justify-center mt-[35px]">
           Already have an account?{" "}
           <Link to={"/"} className=" font-[700] text-blue ml-[5px]">
             SIGN IN

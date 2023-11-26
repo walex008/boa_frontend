@@ -1,30 +1,30 @@
 Arguments: 
-  /home/dteq/.nvm/versions/node/v18.7.0/bin/node /usr/local/bin/yarn add @mui/x-date-pickers/internals
+  /usr/bin/node /usr/share/yarn/bin/yarn.js
 
 PATH: 
-  /home/dteq/.nvm/versions/node/v18.7.0/bin:/home/dteq/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/dteq/Android/Sdk/emulator:/home/dteq/Android/Sdk/platform-tools
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
 
 Yarn version: 
   1.22.19
 
 Node version: 
-  18.7.0
+  12.22.9
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@mui%2fx-date-pickers/internals: Request "https://registry.yarnpkg.com/@mui%2fx-date-pickers/internals" returned a 405
-      at params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66154:18)
-      at self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140890:22)
-      at Request.emit (node:events:513:28)
-      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141862:10)
-      at Request.emit (node:events:513:28)
-      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141784:12)
-      at Object.onceWrapper (node:events:627:28)
-      at IncomingMessage.emit (node:events:525:35)
-      at endReadableNT (node:internal/streams/readable:1359:12)
-      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+  Error: connect ENETUNREACH 104.16.2.35:443 - Local (0.0.0.0:0)
+      at internalConnect (net.js:924:16)
+      at defaultTriggerAsyncIdScope (internal/async_hooks.js:364:12)
+      at emitLookup (net.js:1060:9)
+      at /usr/share/yarn/lib/cli.js:103587:28
+      at /usr/share/yarn/lib/cli.js:103496:13
+      at RawTask.module.exports.RawTask.call (/usr/share/yarn/lib/cli.js:79584:19)
+      at flush (/usr/share/yarn/lib/cli.js:79666:29)
+      at processTicksAndRejections (internal/process/task_queues.js:79:11)
+      at runNextTicks (internal/process/task_queues.js:66:3)
+      at processImmediate (internal/timers.js:434:9)
 
 npm manifest: 
   {

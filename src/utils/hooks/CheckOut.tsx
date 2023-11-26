@@ -12,10 +12,10 @@ type CheckOutType = {
 };
 
 type CheckOutTypeNull = {
-  onState: string | null;
+  onState?: string | null;
   mainRef: React.RefObject<HTMLDivElement>;
-  subRef: React.RefObject<HTMLImageElement>;
-  dispatch?: ({ type }: { type: string }) => {};
+  subRef?: React.RefObject<HTMLImageElement>;
+  dispatchFunc?: () => {};
   dispatchType?: string;
   setFunc?: React.Dispatch<React.SetStateAction<string | null>>;
 };
@@ -49,23 +49,22 @@ export const useClickOut = ({
 };
 
 export const useClickOutNull = ({
-  onState,
+ 
   mainRef,
   subRef,
-  dispatch,
-  dispatchType,
+  dispatchFunc,
   setFunc,
 }: CheckOutTypeNull) => {
   useEffect(() => {
     const checkIfClickedOutside = (e: MouseEvent) => {
       if (
-        onState !== null &&
+      
         mainRef?.current &&
         !mainRef?.current?.contains(e.target as Node) &&
         !subRef?.current?.contains(e.target as Node)
       ) {
-        dispatch
-          ? dispatch({ type: dispatchType ? dispatchType : "" })
+        dispatchFunc
+          ? dispatchFunc()
           : setFunc && setFunc(null);
       }
     };
@@ -73,5 +72,5 @@ export const useClickOutNull = ({
     return () => {
       document.removeEventListener("mousedown", checkIfClickedOutside);
     };
-  }, [onState, mainRef, dispatchType, subRef, dispatch, setFunc]);
+  }, [mainRef, subRef, dispatchFunc, setFunc]);
 };

@@ -44,6 +44,7 @@ export default class RadialBarComp extends PureComponent {
             position: "absolute",
             left: "-50px",
             top: "35px",
+            width:"100%",
           }}
         >
           <RadialBar
