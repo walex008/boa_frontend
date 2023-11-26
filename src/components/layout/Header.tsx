@@ -1,15 +1,17 @@
 import { useState, useRef } from "react";
 import { useClickOut } from "../../utils/hooks/CheckOut";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { setMode, mode } from "../../appSlices/generalSlice";
-import { LightMode } from "@mui/icons-material";
-
+import { setMode, mode, setShowMenu, setIsMenuBar } from "../../appSlices/generalSlice";
+import { LightMode, Menu } from "@mui/icons-material";
+import Search from "../extras/Search";
 const Header = () => {
   const [extendProfile, setExtendProfile] = useState<Boolean>(false);
   const extendProfileRef = useRef<HTMLDivElement>(null);
   const dropRef = useRef<HTMLImageElement>(null);
+  
   const dispatch = useAppDispatch();
   const darkMode = useAppSelector(mode);
+  
 
   useClickOut({
     onState: extendProfile,
@@ -20,41 +22,29 @@ const Header = () => {
 
   return (
     <div
-      className={`relative h-[100px]  flex items-center mb-[17px] z-[3] ${
+      className={`relative md:h-[100px]  flex items-center mb-[17px] z-[3] ${
         darkMode === "false" && "border-b-[0.2px] border-b-[#C6CCD2]"
       }`}
     >
       <div
-        className={`py-[20px] px-[18px] flex items-center justify-between w-[calc(100%-290px)] fixed top-0 ${
+        className={`py-[20px] px-[18px]  hidden lg:flex items-center justify-between w-full lg:w-[calc(100%-290px)] fixed top-0 ${
           darkMode === "true" ? "bg-textBlackH" : " bg-bgBWhite"
         }`}
       >
-        <div
-          className={`w-[338px] p-[5px_10px_5px_18px]  shadow-[0px_1px_8px_0px_rgba(0,0,0,0.12)] flex items-center rounded-[16px] self-end ${
-            darkMode === "true" ? "bg-bgBlack" : "bg-textWhite"
-          }`}
-        >
-          <img src="/images/search.png" alt="" />
-          <input
-            type="text"
-            placeholder="Search"
-            className={`w-full p-[5px] outline-none ${
-              darkMode === "true" ? "bg-bgBlack" : "bg-textWhite"
-            }`}
-          />
-        </div>
+       <Search/>
 
         <div className="flex items-center ">
           <div className="flex mr-[30px] gap-x-[19px]">
             <div>
               {darkMode === "false" ? (
                 <img
-                  src="/images/dark.png"
+                  src="/images/darkMode.png"
                   alt=""
-                  className=" cursor-pointer"
+                  className=" cursor-pointer min-w-[24px] min-h-[24px]"
                   onClick={() => {
                     dispatch(setMode());
                   }}
+                 
                 />
               ) : (
                 <LightMode
@@ -97,6 +87,28 @@ const Header = () => {
           </div>
         </div>
       </div>
+
+      {/* Header middle screen breakpoint */}
+
+<div className="w-full flex lg:hidden items-center justify-between py-[20px] px-[18px]">
+<img src="/images/user.png" alt="" className="h-[32px] w-[32px] cursor-pointer" />
+   <img
+              src={`/images/${darkMode === "true" ? "logo" : "logoDark"}.svg`}
+              alt=""
+              className="w-[51px] h-[41px]"
+            /> 
+{  darkMode==="true"?<Menu   className=" text-textWhite cursor-pointer"
+onClick={()=> dispatch(setShowMenu())}
+onMouseEnter={()=>dispatch(setIsMenuBar(true))}
+onMouseLeave={()=>dispatch(setIsMenuBar(false))}
+
+/>:
+<img  src="/images/menuBar.png" alt="" className=" cursor-pointer" 
+  onClick={()=> dispatch(setShowMenu())}
+  onMouseEnter={()=>dispatch(setIsMenuBar(true))}
+  onMouseLeave={()=>dispatch(setIsMenuBar(false))}
+  />}
+</div>
     </div>
   );
 };

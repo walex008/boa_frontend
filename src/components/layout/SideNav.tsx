@@ -16,30 +16,38 @@ import {
   zoneChild,
 } from "../extras/MenuChildData";
 import { DropMenu, MenuChild, NoDropMenu } from "../extras/Menus";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
-import { useAppSelector } from "../../app/hooks";
-import { mode } from "../../appSlices/generalSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { menu, mode, offMenu } from "../../appSlices/generalSlice";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useClickOutNull } from "../../utils/hooks/CheckOut";
+
 
 const SideNav = () => {
+ 
   const [showChild, setShowChild] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const navRef=useRef<HTMLDivElement>(null)
+  const dispatch =useAppDispatch()
 
   const darkMode = useAppSelector(mode);
+  const sideNav = useAppSelector(menu)
   const generalStyle =
     darkMode === "true" ? "fill-textGreyWhite" : "fill-textBlack";
   const currentStyle = "fill-blue";
+  useClickOutNull({mainRef:navRef, dispatchFunc:()=> dispatch(offMenu())})
 
   return (
     <div
-      className={`h-full w-[calc(100%-6px)] relative ${
+    ref={navRef}
+      className={`h-full ${sideNav?"max-w-[calc(100%-6px)]  top-0 bottom-0":"max-w-0 top-0 bottom-0"} lg:max-w-[calc(100%-6px)] fixed  lg:relative transition-all duration-200 ease-in-out z-[4] lg:z-[1] ${
         darkMode === "true" ? "bg-bgSemiBlack" : "bg-textWhite"
       }`}
     >
       <div
-        className={`h-[calc(100%-55px)] w-[290px] p-[21.433px_38px_20px_33px] border-t-[0.2px] border-t-textGrey overflow-y-auto scrollbar scrollbar-thumb-textGrey scrollbar-w-[6px] scrollbar-track-textGreyWhite scrollbar-rounded-[20px] fixed ${
+        className={`h-full lg:h-[calc(100%-55px)] ${sideNav?"max-w-[290px] p-[21.433px_33px_20px_33px]":"max-w-0 p-0"} lg:max-w-[290px] lg:p-[21.433px_38px_20px_33px] border-t-[0.2px] border-t-textGrey overflow-y-auto overflow-x-hidden scrollbar scrollbar-thumb-textGrey scrollbar-w-[6px] scrollbar-track-textGreyWhite scrollbar-rounded-[20px] fixed transition-all duration-200 ease-in-out ${
           darkMode === "true" ? "bg-bgSemiBlack" : "bg-textWhite border-t-[0]"
         }`}
       >

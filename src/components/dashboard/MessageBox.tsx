@@ -1,24 +1,26 @@
 import Message from "./Message";
-import { useAppDispatch } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { setMessageId } from "../../appSlices/dasboardSlice";
+import { mode } from "../../appSlices/generalSlice";
 
 const MessageBox = () => {
   const dispatch = useAppDispatch();
+  const darkMode=useAppSelector(mode)
   return (
     <div className="w-full px-[30px] mt-[51px] mb-[62px]">
-      <div className="min-h-[715px] w-full bg-textWhite rounded-[16px] shadow-[0px_1px_8px_0px_rgba(0,0,0,0.08)] py-[21px] px-[43px]">
+      <div className={`min-h-[715px] w-full ${darkMode==="true"?"bg-bgSemiBlack":"bg-textWhite"} rounded-[16px] shadow-[0px_1px_8px_0px_rgba(0,0,0,0.08)] py-[21px] px-[43px]`}>
         <div className="flex items-center justify-between h-[73px] p-[21px_11px_22px] border-b-[0.2px] border-b-[#F6F7F8] mb-[20px]">
-          <span className="text-[24px] text-textBlackH font-[600]">
+        <span className={`text-[0.9375rem] md:text-[1.5rem] ${darkMode==="true"?"text-textWhite":"text-textBlackH"} font-[600]`}>
             Message Box
           </span>
           <div className="flex items-center gap-x-[11px]">
-            <span className="text-[24px] text-textBlackH font-[600]">Sort</span>
-            <img src="/images/sort.png" alt="" />
+          <span className={`text-[0.9375rem] md:text-[1.5rem] ${darkMode==="true"?"text-textWhite":"text-textBlackH"} font-[600]`}>Sort</span>
+            <img src={`/images/${darkMode==="true"?"sortWhite":"sort"}.png`} alt="" />
           </div>
         </div>
         {/* New messages */}
         <div className="w-full">
-          <p className="text-[20px] text-textBlack font-[400]">New Messages</p>
+          <p className="text-[0.625rem] md:text-[1.25rem] text-textBlack font-[400]">New Messages</p>
           <Message
             id={1}
             title="Did You Know?"
@@ -38,7 +40,7 @@ const MessageBox = () => {
         {/* Old Messages */}
 
         <div className="w-full mt-[53px]">
-          <p className="text-[20px] text-textBlack font-[400]">Old Messages</p>
+          <p className="text-[0.625rem] md:text-[1.25rem] text-textBlack font-[400]">Old Messages</p>
           <Message
             id={3}
             title="Congratulations"

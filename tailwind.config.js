@@ -10,6 +10,7 @@ export default {
     colors: {
       bgBlack: "#333A41",
       bgSemiBlack: "#22262B",
+      bgDarkMode:"#191919",
       bgBWhite: "#F9FAFB",
       textBlackH: "#1A1A1A",
       textBlack: "#404040",
