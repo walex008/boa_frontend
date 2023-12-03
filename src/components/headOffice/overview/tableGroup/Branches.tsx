@@ -17,7 +17,7 @@ const Branches = () => {
   }, [isLoading]);
 
   return (
-    <div className="w-full px-[30px] nt-[-3px]">
+    <div className="w-full  nt-[-3px]">
       <div
         className={`w-full rounded-[16px]  p-[20px] ${
           darkMode === "true" ? "bg-bgSemiBlack" : "bg-textWhite"

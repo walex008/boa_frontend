@@ -16,6 +16,7 @@ export default {
       textBlack: "#404040",
       textWhite: "#fff",
       textGreyWhite: "#CBCBCB",
+      textFieldDark:"#434c56",
       textGrey: "#808080",
       blueLight: "#E5EFFF",
       blue: "#106CFF",
