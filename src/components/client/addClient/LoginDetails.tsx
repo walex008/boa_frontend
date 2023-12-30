@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useAppSelector } from "../../../app/hooks";
 import { mode } from "../../../appSlices/generalSlice";
-import { InputSelect } from "../../extras/InputSelect";
+import { InputSelect } from "../../extras/Fields";
 
 const LoginDetails = () => {
   const darkMode = useAppSelector(mode);

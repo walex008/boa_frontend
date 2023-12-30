@@ -6,9 +6,10 @@ import { mode } from "../../appSlices/generalSlice";
 const AddFile = () => {
   const navigate = useNavigate();
   const [name, setName] = useState<string | null>(null);
-  const [file, setFile] = useState<string | null>(null);
+  // const [file, setFile] = useState<string | null>(null);
 
   const darkMode = useAppSelector(mode);
+  console.log(name)
 
   return (
     <>

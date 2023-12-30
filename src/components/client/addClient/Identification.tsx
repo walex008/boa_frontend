@@ -2,21 +2,10 @@ import { useRef, useState } from "react";
 import { useAppSelector } from "../../../app/hooks";
 import { mode } from "../../../appSlices/generalSlice";
 import Avatar from "./Avatar";
-import { InputSelect } from "../../extras/InputSelect";
+import { InputSelect } from "../../extras/Fields";
 
 const Identification = () => {
   const darkMode = useAppSelector(mode);
-  const [area, setArea] = useState<string | null>(null);
-  const [openArea, setOpenArea] = useState<Boolean>(false);
-
-  const areaRef = useRef<HTMLUListElement>(null);
-  const areaIconRef = useRef<HTMLImageElement>(null);
-
-  const [group, setGroup] = useState<string | null>(null);
-  const [openGroup, setOpenGroup] = useState<Boolean>(false);
-
-  const groupRef = useRef<HTMLUListElement>(null);
-  const groupIconRef = useRef<HTMLImageElement>(null);
 
   const [zone, setZone] = useState<string | null>(null);
   const [openZone, setOpenZone] = useState<Boolean>(false);
@@ -24,17 +13,6 @@ const Identification = () => {
   const zoneRef = useRef<HTMLUListElement>(null);
   const zoneIconRef = useRef<HTMLImageElement>(null);
 
-  const [branch, setBranch] = useState<string | null>(null);
-  const [openBranch, setOpenBranch] = useState<Boolean>(false);
-
-  const branchRef = useRef<HTMLUListElement>(null);
-  const branchIconRef = useRef<HTMLImageElement>(null);
-
-  const [staff, setStaff] = useState<string | null>(null);
-  const [openStaff, setOpenStaff] = useState<Boolean>(false);
-
-  const staffRef = useRef<HTMLUListElement>(null);
-  const staffIconRef = useRef<HTMLImageElement>(null);
   return (
     <div
       className={`w-full rounded-[16px]  p-[24px_48px] ${

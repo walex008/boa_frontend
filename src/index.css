@@ -27,3 +27,7 @@
 .MuiInputBase-root {
   border-radius: 8px !important;
 }
+
+.mui-datepicker {
+  --mui-datepicker-border-radius: 3px;
+}

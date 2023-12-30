@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useAppSelector } from "../../../app/hooks";
 import { mode } from "../../../appSlices/generalSlice";
-import { InputSelect } from "../../extras/InputSelect";
+import { InputSelect } from "../../extras/Fields";
 import Avatar from "./Avatar";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -208,6 +208,7 @@ const PersonalInfo = () => {
                 onChange={(event: any, newCountry: string | null) => {
                   setCountry(newCountry);
                   console.log(newCountry, country);
+                  console.log(event);
                 }}
                 options={countryNames}
                 sx={{ width: "100%" }}

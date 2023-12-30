@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../../app/hooks";
 import { mode } from "../../../appSlices/generalSlice";
 import Account from "./Account";
@@ -11,9 +10,9 @@ import NextOfKin from "./NextOfKin";
 import LoginDetails from "./LoginDetails";
 import BankDetails from "./BankDetails";
 import Files from "./Files";
+import AddHead from "../../extras/AddHead";
 
 const AddClient = () => {
-  const navigate = useNavigate();
   const darkMode = useAppSelector(mode);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -52,37 +51,7 @@ const AddClient = () => {
   };
   return (
     <div className="pt-[13px] pr-[49px] pl-[39px] pb-[12rem]">
-      <div className="flex items-center justify-end gap-x-[15px] text-[20px] text-[#808080] font-[600]">
-        <Link to={"/dashboard"}>Dashboard</Link>
-        <span>&gt;</span>
-        <Link to={"/client"}>Client</Link>
-        <span>&gt;</span>
-        <span
-          className={`${
-            darkMode === "true" ? "text-textWhite" : "text-textBlackH"
-          }`}
-        >
-          Add Client
-        </span>
-      </div>
-
-      <div className="mt-[21px] flex items-center gap-x-[15px]">
-        <img
-          src={`/images/${
-            darkMode === "true" ? "arrowWhite" : "arrowBack"
-          }.png`}
-          alt=""
-          onClick={() => navigate(-1)}
-          className="cursor-pointer"
-        />
-        <span
-          className={`text-[32px]  font-[600] ${
-            darkMode === "true" ? "text-textWhite" : "text-textBlackH"
-          }`}
-        >
-          Add Client
-        </span>
-      </div>
+      <AddHead prev="Client" prevLink="client" current="Add Client" />
 
       <div className="mt-[33px] flex gap-x-[26px]">
         <div

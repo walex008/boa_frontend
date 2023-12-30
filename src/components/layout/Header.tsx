@@ -1,17 +1,23 @@
 import { useState, useRef } from "react";
 import { useClickOut } from "../../utils/hooks/CheckOut";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { setMode, mode, setShowMenu, setIsMenuBar } from "../../appSlices/generalSlice";
+import {
+  setMode,
+  mode,
+  setShowMenu,
+  setIsMenuBar,
+} from "../../appSlices/generalSlice";
 import { LightMode, Menu } from "@mui/icons-material";
 import Search from "../extras/Search";
+import MobileProfile from "../extras/MobileProfile";
 const Header = () => {
   const [extendProfile, setExtendProfile] = useState<Boolean>(false);
+  const [mobileProfile, setMobileProfile] = useState<Boolean>(false);
   const extendProfileRef = useRef<HTMLDivElement>(null);
   const dropRef = useRef<HTMLImageElement>(null);
-  
+
   const dispatch = useAppDispatch();
   const darkMode = useAppSelector(mode);
-  
 
   useClickOut({
     onState: extendProfile,
@@ -31,7 +37,7 @@ const Header = () => {
           darkMode === "true" ? "bg-textBlackH" : " bg-bgBWhite"
         }`}
       >
-       <Search/>
+        <Search />
 
         <div className="flex items-center ">
           <div className="flex mr-[30px] gap-x-[19px]">
@@ -44,7 +50,6 @@ const Header = () => {
                   onClick={() => {
                     dispatch(setMode());
                   }}
-                 
                 />
               ) : (
                 <LightMode
@@ -90,25 +95,41 @@ const Header = () => {
 
       {/* Header middle screen breakpoint */}
 
-<div className="w-full flex lg:hidden items-center justify-between py-[20px] px-[18px]">
-<img src="/images/user.png" alt="" className="h-[32px] w-[32px] cursor-pointer" />
-   <img
-              src={`/images/${darkMode === "true" ? "logo" : "logoDark"}.svg`}
-              alt=""
-              className="w-[51px] h-[41px]"
-            /> 
-{  darkMode==="true"?<Menu   className=" text-textWhite cursor-pointer"
-onClick={()=> dispatch(setShowMenu())}
-onMouseEnter={()=>dispatch(setIsMenuBar(true))}
-onMouseLeave={()=>dispatch(setIsMenuBar(false))}
+      <div className="relative w-full flex lg:hidden items-center justify-between py-[20px] px-[18px]">
+        <img
+          src="/images/user.png"
+          alt=""
+          className="h-[32px] w-[32px] cursor-pointer"
+          onClick={() => setMobileProfile(true)}
+        />
 
-/>:
-<img  src="/images/menuBar.png" alt="" className=" cursor-pointer" 
-  onClick={()=> dispatch(setShowMenu())}
-  onMouseEnter={()=>dispatch(setIsMenuBar(true))}
-  onMouseLeave={()=>dispatch(setIsMenuBar(false))}
-  />}
-</div>
+        <MobileProfile
+          mobileProfile={mobileProfile}
+          setMobileProfile={setMobileProfile}
+        />
+        <img
+          src={`/images/${darkMode === "true" ? "logo" : "logoDark"}.svg`}
+          alt=""
+          className="w-[51px] h-[41px]"
+        />
+        {darkMode === "true" ? (
+          <Menu
+            className=" text-textWhite cursor-pointer"
+            onClick={() => dispatch(setShowMenu())}
+            onMouseEnter={() => dispatch(setIsMenuBar(true))}
+            onMouseLeave={() => dispatch(setIsMenuBar(false))}
+          />
+        ) : (
+          <img
+            src="/images/menuBar.png"
+            alt=""
+            className=" cursor-pointer"
+            onClick={() => dispatch(setShowMenu())}
+            onMouseEnter={() => dispatch(setIsMenuBar(true))}
+            onMouseLeave={() => dispatch(setIsMenuBar(false))}
+          />
+        )}
+      </div>
     </div>
   );
 };

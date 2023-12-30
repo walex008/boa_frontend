@@ -5,6 +5,7 @@ import { useAppSelector } from "../app/hooks";
 import { view } from "../appSlices/headOfficeSlice";
 import Overview from "../components/headOffice/overview/Overview";
 import Staffs from "../components/headOffice/staffs/Staffs";
+import Payroll from "../components/headOffice/payroll/Payroll";
 
 const HeadOffice = () => {
   const headOfficeView = useAppSelector(view);
@@ -13,6 +14,7 @@ const HeadOffice = () => {
       <Header />
       {headOfficeView === "overview" && <Overview />}
       {headOfficeView === "staffs" && <Staffs />}
+      {headOfficeView === "payroll" && <Payroll />}
     </Layout>
   );
 };

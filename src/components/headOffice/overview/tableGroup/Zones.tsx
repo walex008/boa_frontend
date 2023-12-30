@@ -19,7 +19,7 @@ const Zones = () => {
   }, [isLoading]);
 
   return (
-    <div className="w-full px-[30px] mt-[-3px]">
+    <div className="w-full  mt-[-3px]">
       <div
         className={`w-full rounded-[16px]  p-[20px] ${
           darkMode === "true" ? "bg-bgSemiBlack" : "bg-textWhite"
@@ -46,7 +46,7 @@ const Zones = () => {
             inputData={zonesData}
             click={(event, zoneId) => {
               console.info(event, zoneId);
-              navigate(`/zone-details/${zoneId}`);
+              navigate(`/zones/zone-details/${zoneId}`);
             }}
           />
         )}

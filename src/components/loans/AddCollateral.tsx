@@ -2,12 +2,12 @@ import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../app/hooks";
 import { mode } from "../../appSlices/generalSlice";
-import { InputSelect } from "../extras/InputSelect";
+import { InputSelect } from "../extras/Fields";
 
 const AddCollateral = () => {
   const navigate = useNavigate();
-  const [name, setValue] = useState<string | null>(null);
-  const [file, setFile] = useState<string | null>(null);
+  // const [name, setValue] = useState<string | null>(null);
+  // const [file, setFile] = useState<string | null>(null);
 
   const [type, setType] = useState<string | null>(null);
   const [openType, setOpenType] = useState<Boolean>(false);
