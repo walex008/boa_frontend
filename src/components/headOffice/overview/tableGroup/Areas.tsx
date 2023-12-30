@@ -44,7 +44,7 @@ const Areas = () => {
             inputData={areasData}
             click={(event, zoneId, areaId) => {
               console.info(event, zoneId);
-              navigate(`/area-details/${zoneId}/${areaId}`);
+              navigate(`/areas/area-details/${zoneId}/${areaId}`);
             }}
           />
         )}

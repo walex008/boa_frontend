@@ -2,11 +2,10 @@ import { useRef, useState } from "react";
 import { useAppSelector } from "../../../app/hooks";
 import { mode } from "../../../appSlices/generalSlice";
 import Avatar from "./Avatar";
-import { InputSelect } from "../../extras/InputSelect";
+import { InputSelect } from "../../extras/Fields";
 
 const Identification = () => {
   const darkMode = useAppSelector(mode);
- 
 
   const [zone, setZone] = useState<string | null>(null);
   const [openZone, setOpenZone] = useState<Boolean>(false);

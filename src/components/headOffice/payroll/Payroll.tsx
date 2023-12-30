@@ -1,85 +1,65 @@
-import { useMemo, useState, useCallback } from "react";
+import { useCallback, useState, useMemo } from "react";
+import { Box, IconButton, ThemeProvider, Tooltip } from "@mui/material";
+import { ExportToCsv } from "export-to-csv";
 import {
   MaterialReactTable,
   type MRT_ColumnDef,
   MRT_ToggleFiltersButton,
   MRT_Row,
 } from "material-react-table";
-import { Box, IconButton, ThemeProvider, Tooltip } from "@mui/material";
-import { ExportToCsv } from "export-to-csv";
-import { Link, useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../app/hooks";
-import { mode } from "../../appSlices/generalSlice";
-import { useViewport } from "../extras/hooks/Viewport";
-import MuiThemes from "../extras/MuiThemes";
+import { useAppSelector } from "../../../app/hooks";
+import { mode } from "../../../appSlices/generalSlice";
+import MuiThemes from "../../extras/MuiThemes";
+import { useNavigate } from "react-router-dom";
+import { useViewport } from "../../extras/hooks/Viewport";
 
 type ClientDataType = {
   id?: number;
-  name?: string;
-  group?: string;
-  created?: string;
-  gender?: string;
-  mobile?: string;
-  status?: string;
-  branch?: string;
-  staff?: string;
+  user?: string;
+  date?: string;
+  amount?: string;
+  paymentStatus?: string;
 };
 
 const data: ClientDataType[] = [
   {
     id: 1,
-    name: "Adeyinka Suliat",
-    group: "Nil",
-    created: "6 months ago",
-    gender: "Female",
-    mobile: "0123498889",
-    status: "Active",
-    branch: "Branch 1",
-    staff: "Adeola seun",
+    user: "Adeyinka Suliat",
+    date: "21-03-13",
+    amount: "200.00",
+    paymentStatus: "Fully Paid",
   },
 
   {
     id: 2,
-    name: "Adeyinka Suliat",
-    group: "Joyful",
-    created: "7 months ago",
-    gender: "Male",
-    mobile: "0123498889",
-    status: "Pending",
-    branch: "Branch 2",
-    staff: "Adeola seun",
+    user: "Adeyinka Suliat",
+    date: "21-03-13",
+    amount: "200.00",
+    paymentStatus: "Fully Paid",
   },
   {
     id: 3,
-    name: "Adeyinka Suliat",
-    group: "Nil",
-    created: "6 months ago",
-    gender: "Female",
-    mobile: "0123498889",
-    status: "Active",
-    branch: "Branch 1",
-    staff: "Adeola seun",
+    user: "Adeyinka Suliat",
+    date: "21-03-13",
+    amount: "200.00",
+    paymentStatus: "Fully Paid",
   },
 
   {
     id: 4,
-    name: "Adeyinka Suliat",
-    group: "Joyful",
-    created: "7 months ago",
-    gender: "Male",
-    mobile: "0123498889",
-    status: "Pending",
-    branch: "Branch 2",
-    staff: "Adeola seun",
+    user: "Adeyinka Suliat",
+    date: "21-03-13",
+    amount: "200.00",
+    paymentStatus: "Fully Paid",
   },
 ];
 
-const AllClient = () => {
+const Payroll = () => {
   const [tableData, setTableData] = useState<ClientDataType[]>(data);
   const darkMode = useAppSelector(mode);
+  const darkTheme = MuiThemes();
   const navigate = useNavigate();
   const { width } = useViewport();
-  const darkTheme = MuiThemes();
 
   const handleDeleteRow = useCallback(
     (row: MRT_Row<ClientDataType>) => {
@@ -96,68 +76,44 @@ const AllClient = () => {
   const columns = useMemo<MRT_ColumnDef<Record<string, any>>[]>(
     () => [
       {
-        accessorKey: "name",
-        header: "Name",
+        accessorKey: "id",
+        header: "ID",
+        enableColumnOrdering: false,
+        enableEditing: false, //disable editing on this column
+        enableSorting: false,
+        size: 30,
+      },
+      {
+        accessorKey: "user",
+        header: "User",
         enableColumnOrdering: false,
         enableEditing: false, //disable editing on this column
         enableSorting: false,
         size: 135,
       },
       {
-        accessorKey: "group",
-        header: "Group",
-        enableColumnOrdering: false,
-        enableEditing: false, //disable editing on this column
-        enableSorting: false,
-        size: 30,
-      },
-      {
-        accessorKey: "created",
-        header: "Created",
+        accessorKey: "date",
+        header: "Date",
         enableColumnOrdering: false,
         enableEditing: false, //disable editing on this column
         enableSorting: false,
         size: 120,
       },
       {
-        accessorKey: "gender",
-        header: "Gender",
+        accessorKey: "amount",
+        header: "Amount",
         enableColumnOrdering: false,
         enableEditing: false, //disable editing on this column
         enableSorting: false,
-        size: 30,
+        size: 120,
       },
       {
-        accessorKey: "mobile",
-        header: "Mobile",
+        accessorKey: "paymentStatus",
+        header: "Payment Status",
         enableColumnOrdering: false,
         enableEditing: false, //disable editing on this column
         enableSorting: false,
         size: 100,
-      },
-      {
-        accessorKey: "status",
-        header: "Status",
-        enableColumnOrdering: false,
-        enableEditing: false, //disable editing on this column
-        enableSorting: false,
-        size: 20,
-      },
-      {
-        accessorKey: "branch",
-        header: "Branch",
-        enableColumnOrdering: false,
-        enableEditing: false, //disable editing on this column
-        enableSorting: false,
-        size: 90,
-      },
-      {
-        accessorKey: "staff",
-        header: "Staff",
-        enableColumnOrdering: false,
-        enableEditing: false, //disable editing on this column
-        enableSorting: false,
-        size: 130,
       },
     ],
     []
@@ -180,53 +136,9 @@ const AllClient = () => {
   };
 
   return (
-    <div className=" mt-[23px] px-[30px] pb-[50px]">
-      <>
-        <div className="flex gap-x-[10px] mr-[30px] mt-[13px] items-center justify-end">
-          <Link
-            to={"/dashboard"}
-            className={`text-[0.625rem] md:text-[1.25rem] font-[600] ${
-              darkMode === "true" ? "text-textGreyWhite" : "text-textGrey"
-            }`}
-          >
-            Dashboard
-          </Link>
-          <span
-            className={`text-[0.625rem] md:text-[1.25rem] font-[600] ${
-              darkMode === "true" ? "text-textGreyWhite" : "text-textGrey"
-            }`}
-          >
-            &gt;
-          </span>
-          <span
-            className={`text-[0.625rem] md:text-[1.25rem] font-[600] ${
-              darkMode === "true" ? "text-textWhite" : "text-textBlackH"
-            }`}
-          >
-            Client
-          </span>
-        </div>
-
-        <div className="flex gap-x-[16px] items-center mt-[24px]">
-          <span
-            className={` text-[1rem] md:text-[2.5rem] font-[600] ${
-              darkMode === "true" ? "text-textWhite" : "text-textBlackH"
-            }`}
-          >
-            Client
-          </span>
-          <div
-            className={`w-[1px] h-[10px] md:h-[18px] ${
-              darkMode === "true" ? "bg-textWhite" : "bg-textBlackH"
-            }`}
-          ></div>
-          <span className="text-textGrey text-[0.625rem] md:text-[1.5rem] font-[600]">
-            Client Management
-          </span>
-        </div>
-      </>
+    <div className=" mt-[50px] px-[30px] pb-[50px]">
       <div
-        className={`h-[38px] md:h-[62px] w-[5rem] md:w-fit p-[2px_22px_6.795px_17px] md:p-[18px_19px_19px_44px] flex flex-col md:flex-row items-center justify-center gap-x-[6px] rounded-[16px_16px_0px_0px] mt-[50px] cursor-pointer ${
+        className={`h-[38px] md:h-[62px] w-[5rem] md:w-fit p-[2px_22px_6.795px_17px] md:p-[18px_19px_19px_44px] flex flex-col md:flex-row items-center justify-center gap-x-[6px] rounded-[16px_16px_0px_0px] cursor-pointer ${
           darkMode === "true" ? " bg-bgSemiBlack" : "bg-textWhite"
         }`}
       >
@@ -298,8 +210,7 @@ const AllClient = () => {
             positionActionsColumn="last"
             columns={columns}
             data={tableData}
-            editingMode="modal" //default
-            // enableEditing
+            editingMode="modal"
             enableColumnActions={false}
             enableRowActions={true}
             enableHiding={false}
@@ -325,7 +236,7 @@ const AllClient = () => {
                   <img
                     src="/images/export.png"
                     alt=""
-                    className="h-[16px] w-[16px] md:h-[24px] md:w-[24px]"
+                    className=" h-[16px] w-[16px] md:h-[24px] md:w-[24px]"
                   />
                 </button>
                 <button
@@ -336,7 +247,7 @@ const AllClient = () => {
                   <img
                     src="/images/export.png"
                     alt=""
-                    className="h-[16px] w-[16px] md:h-[24px] md:w-[24px]"
+                    className=" h-[16px] w-[16px] md:h-[24px] md:w-[24px]"
                   />
                 </button>
                 <MRT_ToggleFiltersButton table={table} />
@@ -357,7 +268,6 @@ const AllClient = () => {
                         darkMode === "true" ? "editGrey" : "edit"
                       }.png`}
                       alt=""
-                      className=" h-[16px] w-[16px] md:h-[24px] md:w-[24px]"
                     />
                   </IconButton>
                 </Tooltip>
@@ -371,7 +281,6 @@ const AllClient = () => {
                         darkMode === "true" ? "deleteGrey" : "delete"
                       }.png`}
                       alt=""
-                      className=" h-[16px] w-[16px] md:h-[24px] md:w-[24px]"
                     />
                   </IconButton>
                 </Tooltip>
@@ -381,9 +290,9 @@ const AllClient = () => {
               <Box>
                 <button
                   className="w-[123px] md:w-[187px] h-[32px] md:h-[48px] p-[3.02px_6.04px] md:p-[8px_16px] text-[0.75rem] md:text-[1rem] font-[600] bg-blue text-textWhite rounded-[8px] flex items-center justify-center gap-x-[4px] md:gap-x-[30px]"
-                  onClick={() => navigate("/client/add-client")}
+                  onClick={() => navigate("/payroll/add-payroll")}
                 >
-                  Add Client{" "}
+                  Add Payroll{" "}
                   <img
                     src="/images/plusWhite.png"
                     alt=""
@@ -404,7 +313,7 @@ const AllClient = () => {
             muiTableBodyCellProps={({ row, column }) => ({
               onClick: () => {
                 if (column.id !== "mrt-row-actions") {
-                  navigate(`/client/client-details/${row.original.id}`);
+                  navigate(`/staff-details/${row.original.id}`);
                 }
               },
 
@@ -415,7 +324,9 @@ const AllClient = () => {
               },
             })}
             muiTopToolbarProps={{
-              sx: { backgroundColor: darkMode === "true" ? "#22262B" : "#fff" },
+              sx: {
+                backgroundColor: darkMode === "true" ? "#22262B" : "#fff",
+              },
             }}
             muiBottomToolbarProps={{
               sx: {
@@ -434,4 +345,4 @@ const AllClient = () => {
   );
 };
 
-export default AllClient;
+export default Payroll;

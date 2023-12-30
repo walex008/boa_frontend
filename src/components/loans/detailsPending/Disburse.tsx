@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
-import { InputSelect } from "../../extras/InputSelect";
+import { InputSelect } from "../../extras/Fields";
 import { useAppSelector } from "../../../app/hooks";
 import { mode } from "../../../appSlices/generalSlice";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";

@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../app/hooks";
 import { mode } from "../../appSlices/generalSlice";
-import { InputSelect } from "../extras/InputSelect";
+import { InputSelect } from "../extras/Fields";
 import { Autocomplete, TextField } from "@mui/material";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -23,7 +23,16 @@ const AddGuarantor = () => {
   const [email, setEmail] = useState<string | null>(null);
   const [profession, setProfession] = useState<string | null>(null);
 
-  console.log(firstName, lastName, mobile, address, occupation, occupationAddress, email, profession)
+  console.log(
+    firstName,
+    lastName,
+    mobile,
+    address,
+    occupation,
+    occupationAddress,
+    email,
+    profession
+  );
 
   const [relationship, setRelationship] = useState<string | null>(null);
   const [openRelationship, setOpenRelationship] = useState<Boolean>(false);

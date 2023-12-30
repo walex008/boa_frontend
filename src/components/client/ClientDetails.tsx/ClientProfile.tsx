@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { InputSelect } from "../../extras/InputSelect";
+import { InputSelect } from "../../extras/Fields";
 import { useClickOut } from "../../../utils/hooks/CheckOut";
 import VCard from "../../extras/VCard";
 

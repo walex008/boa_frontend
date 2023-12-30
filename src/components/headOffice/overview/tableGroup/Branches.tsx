@@ -44,7 +44,9 @@ const Branches = () => {
             inputData={branchesData}
             click={(event, zoneId, areaId, branchId) => {
               console.info(event, zoneId);
-              navigate(`/branch-details/${zoneId}/${areaId}/${branchId}`);
+              navigate(
+                `/branches/branch-details/${zoneId}/${areaId}/${branchId}`
+              );
             }}
           />
         )}

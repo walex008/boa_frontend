@@ -49,7 +49,6 @@ export const useClickOut = ({
 };
 
 export const useClickOutNull = ({
- 
   mainRef,
   subRef,
   dispatchFunc,
@@ -58,14 +57,11 @@ export const useClickOutNull = ({
   useEffect(() => {
     const checkIfClickedOutside = (e: MouseEvent) => {
       if (
-      
         mainRef?.current &&
         !mainRef?.current?.contains(e.target as Node) &&
         !subRef?.current?.contains(e.target as Node)
       ) {
-        dispatchFunc
-          ? dispatchFunc()
-          : setFunc && setFunc(null);
+        dispatchFunc ? dispatchFunc() : setFunc && setFunc(null);
       }
     };
     document.addEventListener("mousedown", checkIfClickedOutside);

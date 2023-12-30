@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useAppSelector } from "../../../app/hooks";
 import { mode } from "../../../appSlices/generalSlice";
 import Avatar from "./Avatar";
-import { InputSelect } from "../../extras/InputSelect";
+import { InputSelect } from "../../extras/Fields";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
@@ -237,7 +237,7 @@ const NextOfKin = () => {
                 onChange={(event: any, newCountry: string | null) => {
                   setCountry(newCountry);
                   console.log(newCountry, country);
-                  console.log(event)
+                  console.log(event);
                 }}
                 options={countryNames}
                 sx={{ width: "100%" }}
